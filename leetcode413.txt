@@ -1,0 +1,24 @@
+class Solution(object):
+    def numberOfArithmeticSlices(self, A):
+        """
+        :type A: List[int]
+        :rtype: int
+        """
+        length = len(A)
+        start = 0
+        end = 1
+        count = 0
+        while(True):
+            if start>length-3:
+                break
+            if end==length-1:
+                count +=(end-start)*(end-start-1)/2
+                break
+            delta = A[start+1]-A[start]
+            if A[end+1]-A[end]==delta:
+                end +=1
+            else:
+                count +=(end-start)*(end-start-1)/2
+                start = end 
+                end = start + 1      
+        return count      
